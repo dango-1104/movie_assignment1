@@ -1,0 +1,2 @@
+class MovieComment < ApplicationRecord
+end
