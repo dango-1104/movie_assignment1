@@ -5,13 +5,14 @@
     <title>Moviegoer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
+    <header class= "header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <%= link_to "Moviegoer", root_path, class: "bookers navbar-brand" %>
@@ -53,14 +54,14 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class= "main">
       <p id="notice">
         <%= flash[:notice] %>
       </p>
       <%= yield %>
       </main>
     <footer>
-      <div class="container mt-5">
+      <div class="container pt-3">
   	    <div class="row">
     	    <div class="text-center">
     		    <p>©Moviegoer</p>

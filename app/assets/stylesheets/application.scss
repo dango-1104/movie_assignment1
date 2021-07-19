@@ -14,3 +14,13 @@
  *= require_self
  */
  @import "bootstrap";
+
+ .header {
+   position: fixed;
+   top: 0px;
+   width: 100%;
+ }
+
+ .main {
+   padding-top: 39px;
+ }
