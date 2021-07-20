@@ -24,13 +24,13 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li>
-                <%= link_to "Home", user_path(current_user), class: "bookers fas fa-home nav-link text-light" %>
+                <%= link_to "", user_path(current_user), class: "bookers fas fa-user-cog nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "Users", users_path, class: "bookers fas fa-users nav-link text-light" %>
+                <%= link_to "", users_path, class: "bookers fas fa-users nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "Movies", movies_path, class: "bookers fas fa-movie nav-link text-light" %>
+                <%= link_to "", movies_path, class: "bookers fas fa-film nav-link text-light" %>
               </li>
               <li>
                 <%= link_to "logout", destroy_user_session_path, method: :delete, class: "bookers fas fa-sign-out-alt nav-link text-light" %>
@@ -57,6 +57,7 @@
     <main class= "main">
       <p id="notice">
         <%= flash[:notice] %>
+        <%= render 'movies/search', range: @range, users: @users, movies: @movies %>
       </p>
       <%= yield %>
       </main>
