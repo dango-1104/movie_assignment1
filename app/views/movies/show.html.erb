@@ -1,0 +1,65 @@
+<div class="post-detail py-5 bg-light">
+  <div class="card w-75 mx-auto mt-4 shadow-lg">
+    <%= attachment_image_tag @movie, :movie_image, class:"card-img-top"; %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= attachment_image_tag @movie.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(movie_path(@movie.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= @movie.title %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-title">Note：<%= @movie.body %></p>
+          <span><i class="fas fa-user"></i> By <%= @movie.user.name %> ｜ </span>
+          <span><i class="fa fa-calendar"></i> <%= @movie.created_at.strftime('%Y/%m/%d') %> ｜ </span>
+          <span><i class="fa fa-comment"></i> <%= link_to "#{@movie.movie_comments.count}", movie_path(@movie.id), class:"text-dark" %> ｜ </span>
+          <% if @movie.favorited_by?(current_user) %>
+            <span>
+              <%= link_to(movie_favorites_path(@movie), class:"text-dark", method: :delete) do %>
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= @movie.favorites.count %>
+              <% end %>
+            </span>
+            <% else %>
+            <span>
+              <%= link_to(movie_favorites_path(@movie), class:"text-dark", method: :post) do %>
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= @movie.favorites.count %>
+              <% end %>
+            </span>
+          <% end %>
+          <% if @movie.user == current_user %>
+            <span> ｜ </span><%= link_to "Delete", movie_path(@movie), class:"text-dark", method: :delete %>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+      <div class="comments card-text">
+        <h4 class="mt-3"><%= @movie.movie_comments.count %>件コメント</h4>
+        <% @movie.movie_comments.each do |movie| %>
+          <div class="media border mb-3">
+            <%= attachment_image_tag movie.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"bd-placeholder-img align-self-center mx-3" %>
+            <div class="media-body ml-4 p-3">
+              <p><%= movie.created_at.strftime('%Y/%m/%d') %><%= movie_comment.comment %></p>
+              <p><%= movie_comment.comment %></p>
+              <% if movie_comment.user == current_user %>
+                <%= link_to "Delete", movie_movie_comment_path(movie_comment.movie, movie_comment), method: :delete, class: "btn btn-danger pull-right" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="new-comment card-text">
+        <%= form_with(model:[@movie, @movie_comment]) do |f| %>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">コメントする</label>
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          </div>
+          <%= f.submit "Send", class:"btn btn-lg btn-info mt-2 float-right" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
