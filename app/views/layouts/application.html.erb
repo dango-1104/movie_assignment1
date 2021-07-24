@@ -15,7 +15,7 @@
     <header class= "header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <%= link_to "Moviegoer", root_path, class: "bookers navbar-brand" %>
+          <%= link_to "Moviegoer", root_path, class: "moviegoer navbar-brand" %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,16 +24,22 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li>
-                <%= link_to "", user_path(current_user), class: "bookers fas fa-user-cog nav-link text-light" %>
+                <%= render 'movies/search', range: @range, users: @users, movies: @movies %>
               </li>
               <li>
-                <%= link_to "", users_path, class: "bookers fas fa-users nav-link text-light" %>
+                <%= link_to "", user_path(current_user), class: "fas fa-user-cog nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "", movies_path, class: "bookers fas fa-film nav-link text-light" %>
+                <%= link_to "", users_path, class: "fas fa-users nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "logout", destroy_user_session_path, method: :delete, class: "bookers fas fa-sign-out-alt nav-link text-light" %>
+                <%= link_to "", movies_path, class: "fas fa-film nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "", new_movie_path, class: "fas fa-plus-square nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
               </li>
               <% else %>
               <li>
@@ -54,10 +60,9 @@
         </div>
       </nav>
     </header>
-    <main class= "main">
+    <main>
       <p id="notice">
         <%= flash[:notice] %>
-        <%= render 'movies/search', range: @range, users: @users, movies: @movies %>
       </p>
       <%= yield %>
       </main>

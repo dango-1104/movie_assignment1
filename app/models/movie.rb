@@ -9,9 +9,9 @@ class Movie < ApplicationRecord
   end
 
   validates :title, presence: true
-  validates :movie_image_id, presence: true
+  validates :movie_image, presence: true
   validates :body, presence: true
-  validates :star, presence: true
+  # validates :star, presence: true
 
   def self.looks(search, word)
     if search == "perfect_match"

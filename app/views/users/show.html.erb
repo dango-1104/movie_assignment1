@@ -1,17 +1,43 @@
-<div class="container px-5 px-sm-0">
+<div class="container px-8 px-sm-0">
   <div class="row">
   <%= render 'users/userinfo', user: @user %>
     <div class="col-md-8 offset-md-1">
   		<h2>Movies</h2>
   		<table class="table table-hover table-inverse">
-  		  <thead>
-          <tr>
-            <th>Photo</th>
-          </tr>
-        </thead>
-        <tbody>
-      	</tbody>
-  		</table>
+        <% @movies.each do |movie| %>
+        <div class="card w-60 mx-auto mt-4 shadow-lg">
+          <%= link_to movie_path(movie.id) do %>
+            <%= attachment_image_tag movie, :movie_image, class:"card-img-top"; %>
+          <% end %>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-10">
+                <p class="card-title">
+                  <%= link_to(movie_path(movie.id), class:"text-dark") do %>
+                    <strong><i class="far fa-file-video"></i><span> <%= movie.title %></span></strong>
+                  <% end %>
+                  <div id="star"></div>
+                </p>
+                <p class="card-text">Note：<%= movie.body %></p>
+                <span><i class="fas fa-user"></i> By <%= movie.user.name %> ｜ </span>
+                <span><%= link_to "#{movie.movie_comments.count} Comment", movie_path(movie.id), class:"text-dark" %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          score: 5.0,
+          readOnly: true,
+          half: true
+        });
+        </script>
+      </table>
   	</div>
   </div>
 </div>
