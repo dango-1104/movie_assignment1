@@ -24,7 +24,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li>
-                <%= render 'movies/search', range: @range, users: @users, movies: @movies %>
+                <%= render 'movies/search', range: @range, users: @users, movies: @movies, class: "text-center" %>
               </li>
               <li>
                 <%= link_to "", user_path(current_user), class: "fas fa-user-cog nav-link text-light" %>
