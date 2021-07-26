@@ -3,7 +3,6 @@
 <% if @followers.exists? %>
   <thead>
     <tr>
-      <th>Image</th>
       <th>Name</th>
       <th>Follow</th>
       <th>Follower</th>
@@ -13,8 +12,10 @@
   <tbody>
     <% @followers.each do |follower| %>
       <tr>
-        <td><%= attachment_image_tag follower, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"my-1 rounded-circle" %></td>
-        <td><strong><%= follower.name %></strong></td>
+        <td>
+          <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"my-1 rounded-circle" %>
+          <span><strong><%= follower.name %></strong></span>
+        </td>
         <td><%= follower.followings.count %></td>
         <td><%= follower.followers.count %></td>
         <td><%= link_to "Show", user_path(follower), class: "btn btn-info pull-right" %></td>
