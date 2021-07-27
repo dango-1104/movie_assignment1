@@ -15,7 +15,7 @@
         <tbody>
     		 <% @users.each do |user| %>
     		  <tr>
-    		    <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"mt-3 rounded-circle" %></td>
+    		    <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no-icon.jpg", class:"mt-3 rounded-circle" %></td>
       			<td><strong><%= user.name %></strong></td>
       			<td><%= user.introduction %></td>
         		<td><% if current_user.id != user.id %>

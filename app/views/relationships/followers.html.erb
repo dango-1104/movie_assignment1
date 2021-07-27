@@ -13,7 +13,7 @@
     <% @followers.each do |follower| %>
       <tr>
         <td>
-          <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"my-1 rounded-circle" %>
+          <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, fallback: "no-icon.jpg", class:"my-1 rounded-circle" %>
           <span><strong><%= follower.name %></strong></span>
         </td>
         <td><%= follower.followings.count %></td>
