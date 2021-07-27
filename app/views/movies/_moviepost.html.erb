@@ -14,9 +14,12 @@
             <font size="5"><strong><%= movie.user.name %></strong></font>
           </span>
           <% end %>
-          <span><i class="fa fa-comment"></i> <%= link_to "#{movie.movie_comments.count}", movie_path(movie.id), class:"text-dark" %> ｜ </span>
+
+          <div class="inbox">
+          <span class="flex-left"><i class="fa fa-comment"></i> <%= link_to "#{movie.movie_comments.count}", movie_path(movie.id), class:"text-dark" %> ｜ </span>
+
           <% if movie.favorited_by?(current_user) %>
-          <span>
+          <span class="flex-right">
             <%= link_to(movie_favorites_path(movie), class:"text-dark", method: :delete) do %>
               <i class="fas fa-heart" aria-hidden="true"></i> <%= movie.favorites.count %>
             <% end %>
@@ -28,6 +31,8 @@
             <% end %>
           </span>
         <% end %>
+        </div>
+
         </p>
 
         <div class="col-10">
