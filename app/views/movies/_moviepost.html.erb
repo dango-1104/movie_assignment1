@@ -43,7 +43,6 @@
           </p>
           <div class="star_<%= movie.id %>"></div>
           <p class="card-text">Note：<%= movie.body %></p>
-          <span><i class="fas fa-user"></i> By <%= movie.user.name %> ｜ </span>
           <span><%= link_to "#{movie.movie_comments.count} Comment", movie_path(movie.id), class:"text-dark" %></span>
         </div>
       </div>

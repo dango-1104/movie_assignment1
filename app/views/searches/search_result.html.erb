@@ -46,9 +46,9 @@
         <tr>
           <td>
     		      <%= link_to user_path(movie.user) do %>
-    		      <%= attachment_image_tag movie.user, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"m-2 rounded-circle" %><br/>
+    		      <span><%= attachment_image_tag movie.user, :profile_image, :fill, 40, 40, fallback: "no-icon.jpeg", class:"m-2 rounded-circle" %></span>
     		      <% end %>
-    		      <strong><%= movie.user.name %></strong>
+    		      <span><strong><%= movie.user.name %></strong></span>
     		  </td>
           <td><%=link_to movie.title, movie_path(movie) %></td>
           <td><%= movie.body %></td>
