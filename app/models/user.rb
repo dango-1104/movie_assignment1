@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :movies, dependent: :destroy
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  attachment :profile_image
+  attachment :profile_image, content_type: ["image/jpg", "image/png", "image/gif"]
 
   # class Follower フォロ-する側目線
   has_many :follower_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

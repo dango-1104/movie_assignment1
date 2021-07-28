@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/home/about' => 'homes#about'
   get "search" => "searches#search_result"
   resources :movies do
-    resources :movie_comments, only: [:create, :destroy, :show]
+    resources :movie_comments, only: [:create, :destroy, :index]
      resource :favorites, only: [:create, :destroy]
   end
 

@@ -2,7 +2,7 @@ class Movie < ApplicationRecord
   belongs_to :user
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  attachment :movie_image
+  attachment :movie_image, content_type: ["image/jpg", "image/png", "image/gif"]
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

@@ -20,7 +20,7 @@
           <p class="card-title">Note：<%= @movie.body %></p>
           <span><i class="fas fa-user"></i> By <%= @movie.user.name %> ｜ </span>
           <span><i class="fa fa-calendar"></i> <%= @movie.created_at.strftime('%Y/%m/%d') %> ｜ </span>
-          <span><i class="fa fa-comment"></i> <%= link_to "#{@movie.movie_comments.count}", movie_movie_comment_path(@movie.id), class:"text-dark" %> ｜ </span>
+          <span><i class="fa fa-comment"></i> <%= link_to "#{@movie.movie_comments.count}", movie_movie_comments_path(movie_id: @movie.id), class:"text-dark" %> ｜ </span>
           <% if @movie.favorited_by?(current_user) %>
             <span>
               <%= link_to(movie_favorites_path(@movie), class:"text-dark", method: :delete) do %>
