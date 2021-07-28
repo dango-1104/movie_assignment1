@@ -35,7 +35,8 @@
             </span>
           <% end %>
           <% if @movie.user == current_user %>
-            <span> ｜ </span><%= link_to "Delete", movie_path(@movie), class:"text-dark", method: :delete %>
+            <span> ｜ </span><%= link_to "Delete", movie_path(@movie), class:"btn btn-sm btn-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
+            <span> ｜ </span><%= link_to "Edit", edit_movie_path(@movie.id), class: "btn btn-sm btn-success" %></td>
           <% end %>
         </div>
       </div>
