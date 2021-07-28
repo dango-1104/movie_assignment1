@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-10">
           <p class="card-title">
-            <%= attachment_image_tag @movie.user, :profile_image, :fill, 45, 45, fallback: "no_image.jpg", class:"rounded-circle"; %>
+            <%= attachment_image_tag @movie.user, :profile_image, :fill, 45, 45, fallback: "no-image.jpg", class:"rounded-circle" %>
             <%= link_to(user_path(@user.id), class:"text-dark") do %>
             <span>
               <font size="5"><strong><%= @movie.user.name %></strong></font>
